@@ -10,7 +10,7 @@ use App\Http\Controllers\obatController;
 use App\Http\Controllers\pembelianController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [homeController::class,'show_login']);
+Route::get('/', [homeController::class,'show_login'])->name('tampilan_login');
 
 Route::post('/login',[homeController::class, 'login'])->name('login');
 Route::get('/logout',[homeController::class, 'logout'])->name('logout');
@@ -22,6 +22,8 @@ Route::get('/email', function () {
 Route::get('/nyobak', function () {
     return view('nyobak');
 });
+
+Route::group(['middleware' => 'admin'], function(){
 
 Route::get('/admin/dashboard',[AdminController::class, 'show_dashboard'])->name('admin_dashboard');
 Route::post('/admin/pembelian/tambah',[pembelianController::class, 'tambahTransaksi'])->name('admin_pembelian_tambah');
@@ -40,8 +42,11 @@ Route::get('/admin/beli_obat',[AdminController::class, 'show_beli_obat'])->name(
 Route::post('/admin/detail_pembelian/tambah',[detail_pembelianController::class, 'tambahdetail'])->name('admin_detail_pembelian_tambah');
 Route::delete('/admin/detail_pemebelian/hapus/{id}',[detail_pembelianController::class, 'hapusdetail'])->name('admin_detail_pembelian_edit');
 
+});
 Route::put('/cetaklaporans/{id}',[AdminController::class, 'laporans'])->name('laporans');
 // Route::get('/laporan',[AdminController::class, 'laporan'])->name('laporan');
+
+Route::group(['middleware' => 'admin_kepala'], function(){
 
 
 Route::get('/admin_kepala/dashboard',[Admin_kepalaController::class, 'show_dashboard'])->name('admin_kepala_dashboard');
@@ -58,7 +63,10 @@ Route::delete('/admin_kepala/akun_farmasi/hapus/{id}',[akunCotroller::class, 'ha
 Route::get('/admin_kepala/transaksi_menunggu',[Admin_kepalaController::class, 'show_transaksi_menunggu'])->name('kepala_transaksi_menunggu');
 Route::get('/admin_kepala/transaksi_selesai',[Admin_kepalaController::class, 'show_transaksi_selesai'])->name('kepalatra_selesai');
 
+});
 
+
+Route::group(['middleware' => 'admin_gudang'], function(){
 
 Route::get('/admin_gudang/dashboard',[Admin_gudangController::class, 'show_dashboard'])->name('admin_gudang_dashboard');
 Route::get('/admin_gudang/stok_obat',[Admin_gudangController::class, 'show_stok_obat'])->name('gudang_stok_obat');
@@ -68,3 +76,5 @@ Route::get('/admin_gudang/permintaan',[Admin_gudangController::class, 'permintaa
 Route::put('/verifikasipermintaan/{id}',[Admin_gudangController::class, 'show_verifikasi'])->name('gudang_sverifikasi');
 
 Route::get('/admin_gudang/transaksi_selesai',[Admin_gudangController::class, 'show_transaksi_selesai'])->name('gudangtra_selesai');
+
+});

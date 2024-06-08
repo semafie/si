@@ -23,13 +23,13 @@ class k_farmasiMiddleware
             }else{
                 Auth::logout();
 
-                return redirect()->route('sign-in')->with(Session::flash('login_dulu', true));
+                return redirect()->route('tampilan_login')->with(Session::flash('login_dulu', true));
             }
             
         } else{
             Auth::logout();
 
-            return redirect()->route('sign-in')->with(Session::flash('login_dulu', true));
+            return redirect()->route('tampilan_loginp')->with(Session::flash('login_dulu', true));
         }
     }
 }

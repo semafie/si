@@ -73,7 +73,7 @@ class homeController extends Controller
                 return redirect()->intended('/admin/dashboard')->with(Session::flash('success_message', true));
             }
             elseif(Auth::user()->role == 'admin_gudang'){
-                return redirect()->intended('/admin/dashboard')->with(Session::flash('berhasil_login', true));
+                return redirect()->intended('/admin_gudang/dashboard')->with(Session::flash('berhasil_login', true));
             }
 
         } else {

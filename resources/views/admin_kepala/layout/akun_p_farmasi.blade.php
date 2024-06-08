@@ -142,7 +142,7 @@
   
     Swal.fire({
       title: 'Berhasil',
-      text: 'Data bayi Berhasil ditambahkan',
+      text: 'akun p farmasi Berhasil ditambahkan',
       icon: 'success',
       confirmButtonText: 'Oke'
     })
@@ -150,7 +150,7 @@
     @elseif(Session::has('gagal_tambah'))
     Swal.fire({
       title: 'Gagal',
-      text: 'Data bayi gagal di tambahkan',
+      text: 'akun p farmasi gagal di tambahkan',
       icon: 'error',
       confirmButtonText: 'Oke'
     })
@@ -168,7 +168,7 @@
   
   Swal.fire({
     title: 'Berhasil',
-    text: 'Data pemeriksaan Berhasil di edit',
+    text: 'Data farmasi Berhasil di edit',
     icon: 'success',
     confirmButtonText: 'Oke'
   })
@@ -176,7 +176,7 @@
 
   Swal.fire({
     title: 'Berhasil',
-    text: 'Data bayi Berhasil di hapus',
+    text: 'akun p farmasi Berhasil di hapus',
     icon: 'success',
     confirmButtonText: 'Oke'
   })
