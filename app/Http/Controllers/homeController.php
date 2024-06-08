@@ -52,6 +52,7 @@ class homeController extends Controller
         return view('welcome');
     }
 
+
     public function login(Request $request){
 
         $request->validate([
@@ -84,6 +85,6 @@ class homeController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect(url('login'));
+        return redirect('/');
     }
 }

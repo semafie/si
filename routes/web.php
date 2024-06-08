@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [homeController::class,'show_login']);
 
 Route::post('/login',[homeController::class, 'login'])->name('login');
+Route::get('/logout',[homeController::class, 'logout'])->name('logout');
 
 Route::get('/email', function () {
     return view('email');
