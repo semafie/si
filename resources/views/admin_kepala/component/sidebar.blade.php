@@ -62,58 +62,55 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboards -->
-      <li class="menu-item @active('admin_dashboard') open">
-        <a href="{{ route('admin_dashboard') }}" class="menu-link">
+      <li class="menu-item @active('admin_kepala_dashboard') open">
+        <a href="{{ route('admin_kepala_dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Dashboards">Dashboards</div>
           {{-- <div class="badge bg-danger rounded-pill ms-auto">5</div> --}}
         </a>
       </li>
 
-      <!-- Layouts -->
-      <li class="menu-item @active('admin_obat') @active('admin_menipiss') @active('admin_beli_obat')">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-layout"></i>
-          <div data-i18n="Layouts">Obat</div>
-        </a>
-
-        <ul class="menu-sub ">
-          <li class="menu-item @active('admin_obat')">
-            <a href="{{ route('admin_obat') }}" class="menu-link">
-              <div data-i18n="Container">semua Obat</div>
-            </a>
-          </li>
-          <li class="menu-item @active('admin_beli_obat')">
-            <a href="{{ route('admin_beli_obat') }}" class="menu-link">
-              <div data-i18n="Without navbar">Beli Obat</div>
-            </a>
-          </li>
-          <li class="menu-item @active('admin_menipiss')">
-            <a href="{{ route('admin_menipiss') }}" class="menu-link">
-              <div data-i18n="Without navbar">Obat Menipis</div>
-            </a>
-          </li>
-        </ul>
-      </li>
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Data Master</span>
       </li>
 
+      <!-- Layouts -->
+      <li class="menu-item @active('kepala_akunadmin')  @active('kepala_akungudang')">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <div data-i18n="Layouts">Akun Pegawai</div>
+        </a>
+
+        <ul class="menu-sub ">
+          <li class="menu-item @active('kepala_akunadmin')">
+            <a href="{{ route('kepala_akunadmin') }}" class="menu-link">
+              <div data-i18n="Container">Akun P.Farmasi</div>
+            </a>
+          </li>
+          <li class="menu-item @active('kepala_akungudang')">
+            <a href="{{ route('kepala_akungudang') }}" class="menu-link">
+              <div data-i18n="Without navbar">AKun P.Gudang</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+
       <!-- Front Pages -->
-      <li class="menu-item @active('transaksi_menunggu') @active('transaksi_selesai')">
+      <li class="menu-item @active('kepala_transaksi_menunggu') @active('kepalatra_selesai')">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-store"></i>
           <div data-i18n="Front Pages">Laporan</div>
           {{-- <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div> --}}
         </a>
         <ul class="menu-sub ">
-          <li class="menu-item @active('transaksi_menunggu')">
-            <a href="{{ route('transaksi_menunggu') }}" class="menu-link">
+          <li class="menu-item @active('kepala_transaksi_menunggu')">
+            <a href="{{ route('kepala_transaksi_menunggu') }}" class="menu-link">
               <div data-i18n="Without menu">Transaksi menunggu</div>
             </a>
           </li>
-          <li class="menu-item @active('transaksi_selesai')">
-            <a href="{{ route('transaksi_selesai') }}" class="menu-link">
+          <li class="menu-item @active('kepalatra_selesai')">
+            <a href="{{ route('kepalatra_selesai') }}" class="menu-link">
               <div data-i18n="Without navbar">Transaksi selesai</div>
             </a>
           </li>

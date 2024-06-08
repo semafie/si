@@ -16,14 +16,19 @@
               </thead>
               <tbody>
                 @foreach ($obat as $item)
+
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nama_obat }}</td>
                         <td>{{ $item->harga_obat }}</td>
                         <td>{{ $item->jumlah_stok }}</td>
-                        <td>
-                            <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editdata{{ $item->id }}">Edit</button>
-                            <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editdata">Hapus</button>
+                        <td class="button_intable" >
+                            <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editobat{{ $item->id }}">Edit</button>
+                            <form action="/admin/obat/hapus/{{ $item->id }}" method="POST">
+                              @csrf
+                              @method('delete')
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                          </form>
                         </td>
                     </tr>
                     
@@ -31,32 +36,33 @@
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="modalToggleLabel">Tambah Obat</h5>
+                              <h5 class="modal-title" id="modalToggleLabel">Edit Obat</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                     
-                            <form action="{{ route('admin_tambah_obat') }}" method="POST">
+                            <form action="/admin/obat/edit/{{ $item->id }}" method="POST">
                                 @csrf
+                                @method('put')
                             <div class="modal-body semua_obats">
                                 <div class="dua_label">
                                     <label for="defaultFormControlInput" class="form-label">ID</label>
                                     <label for="defaultFormControlInput" class="form-label">Nama Obat</label>
                                 </div>
                                 <div class="dua_input">
-                                    <input type="text" class="form-control" id="defaultFormControlInput" placeholder="ID dibuat otomatis" aria-describedby="defaultFormControlHelp" />
-                                    <input type="text" name="nama_obat" class="form-control" id="defaultFormControlInput" placeholder="Masukkan nama obat" aria-describedby="defaultFormControlHelp" />
+                                    <input type="text" value="{{ $item->id }}" class="form-control" disabled id="defaultFormControlInput" placeholder="ID dibuat otomatis" aria-describedby="defaultFormControlHelp" />
+                                    <input type="text" name="nama_obat" value="{{ $item->nama_obat }}" name="nama_obat" class="form-control" id="defaultFormControlInput" placeholder="Masukkan nama obat" aria-describedby="defaultFormControlHelp" />
                                 </div>
                                 <div class="dua_label">
                                     <label for="defaultFormControlInput" class="form-label">Harga Obat</label>
                                     <label for="defaultFormControlInput" class="form-label">JUmlah stok</label>
                                 </div>
                                 <div class="dua_input">
-                                    <input type="text" name="harga_obat" class="form-control" id="defaultFormControlInput" placeholder="Masukkan harga obat" aria-describedby="defaultFormControlHelp" />
-                                    <input type="text" name="jumlah_stok" class="form-control" id="defaultFormControlInput" placeholder="Masukkan jumlah stok" aria-describedby="defaultFormControlHelp" />
+                                    <input type="text" name="harga_obat" value="{{ $item->harga_obat }}" name="harga_obat" class="form-control" id="defaultFormControlInput" placeholder="Masukkan harga obat" aria-describedby="defaultFormControlHelp" />
+                                    <input type="text" name="jumlah_stok" value="{{ $item->jumlah_stok }}" name="jumlah_stok" class="form-control" id="defaultFormControlInput" placeholder="Masukkan jumlah stok" aria-describedby="defaultFormControlHelp" />
                                 </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="submit" class="btn btn-primary" >Tambah Obat</button>
+                              <button type="submit" class="btn btn-primary" >Edit Obat</button>
                             </div>
                         </form>
                           </div>
@@ -85,7 +91,7 @@
                 <label for="defaultFormControlInput" class="form-label">Nama Obat</label>
             </div>
             <div class="dua_input">
-                <input type="text" class="form-control" id="defaultFormControlInput" placeholder="ID dibuat otomatis" aria-describedby="defaultFormControlHelp" />
+                <input type="text" class="form-control" disabled id="defaultFormControlInput" placeholder="ID dibuat otomatis" aria-describedby="defaultFormControlHelp" />
                 <input type="text" name="nama_obat" class="form-control" id="defaultFormControlInput" placeholder="Masukkan nama obat" aria-describedby="defaultFormControlHelp" />
             </div>
             <div class="dua_label">

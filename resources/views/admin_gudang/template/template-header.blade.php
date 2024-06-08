@@ -62,7 +62,7 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-        @include('admin.component.sidebar')
+        @include('admin_gudang.component.sidebar')
         
         <!-- / Menu -->
 
@@ -70,7 +70,7 @@
         <div class="layout-page">
           <!-- Navbar -->
 
-          @include('admin.component.navbar')
+          @include('admin_gudang.component.navbar')
 
           <!-- / Navbar -->
 
