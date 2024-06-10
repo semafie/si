@@ -15,5 +15,6 @@ class obat_gudangModel extends Model
         'nama_obat',
         'harga_obat',
         'jumlah_stok',
+        'jenis'
     ];
 }

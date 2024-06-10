@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\detail_pembelianModel;
+use App\Models\obatModel;
 use App\Models\pembelianModel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,8 +11,15 @@ use Illuminate\Http\Request;
 class Admin_kepalaController extends Controller
 {
     public function show_dashboard(){
+
+        $obat = obatModel::where('jenis', 'obat')->where('jumlah_stok','<','10')->get();
+        $bahan = obatModel::where('jenis', 'bahan')->where('jumlah_stok','<','10')->get();
+        $alat = obatModel::where('jenis', 'alat')->where('jumlah_stok','<','10')->get();
         return view('admin_kepala.layout.dashboard',[
-            'title' => 'Dashboard kepala'
+            'title' => 'Dashboard kepala',
+            'obat' => $obat,
+            'bahan' => $bahan,
+            'alat' => $alat
         ]);
     }
     public function show_akunadmin(){

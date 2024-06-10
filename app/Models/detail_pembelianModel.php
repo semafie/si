@@ -16,6 +16,7 @@ class detail_pembelianModel extends Model
         'nama_obat',
         'harga_obat',
         'jumlah_stok',
+        'jenis',
         'sub_total',
         'id_pembelian',
         'status'

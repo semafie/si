@@ -74,23 +74,23 @@
       <li class="menu-item @active('admin_obat') @active('admin_menipiss') @active('admin_beli_obat')">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-layout"></i>
-          <div data-i18n="Layouts">Obat</div>
+          <div data-i18n="Layouts">Transaksi</div>
         </a>
 
         <ul class="menu-sub ">
           <li class="menu-item @active('admin_obat')">
             <a href="{{ route('admin_obat') }}" class="menu-link">
-              <div data-i18n="Container">semua Obat</div>
+              <div data-i18n="Container">semua stok</div>
             </a>
           </li>
           <li class="menu-item @active('admin_beli_obat')">
             <a href="{{ route('admin_beli_obat') }}" class="menu-link">
-              <div data-i18n="Without navbar">Beli Obat</div>
+              <div data-i18n="Without navbar">Pembelian</div>
             </a>
           </li>
           <li class="menu-item @active('admin_menipiss')">
             <a href="{{ route('admin_menipiss') }}" class="menu-link">
-              <div data-i18n="Without navbar">Obat Menipis</div>
+              <div data-i18n="Without navbar">Stok Menipis</div>
             </a>
           </li>
         </ul>

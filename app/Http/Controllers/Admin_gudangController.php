@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\detail_pembelianModel;
 use App\Models\obat_gudangModel;
+use App\Models\obatModel;
 use App\Models\pembelianModel;
 use Illuminate\Http\Request;
 
 class Admin_gudangController extends Controller
 {
     public function show_dashboard(){
+
+        $obat = obatModel::where('jenis', 'obat')->where('jumlah_stok','<','10')->get();
+        $bahan = obatModel::where('jenis', 'bahan')->where('jumlah_stok','<','10')->get();
+        $alat = obatModel::where('jenis', 'alat')->where('jumlah_stok','<','10')->get();
         return view('admin_gudang.layout.dashboard',[
-            'title' => 'Dashboard Pegawai Gudang'
+            'title' => 'Dashboard Pegawai Gudang',
+            'obat' => $obat,
+            'bahan' => $bahan,
+            'alat' => $alat
         ]);
     }
 
@@ -26,26 +34,35 @@ class Admin_gudangController extends Controller
     }
 
     public function show_stok_obat(){
-        $obat = obat_gudangModel::all();
+        $obat = obat_gudangModel::where('jenis', 'obat')->get();
+        $bahan = obat_gudangModel::where('jenis', 'bahan')->get();
+        $alat = obat_gudangModel::where('jenis', 'alat')->get();
         return view('admin_gudang.layout.stok_obat',[
-            'title' => 'stok obat gudang',
-            'obat' => $obat
+            'title' => 'stok gudang',
+            'obat' => $obat,
+            'bahan' => $bahan,
+            'alat' => $alat,
         ]);
     }
 
     public function permintaan(){
-        $pembelian = pembelianModel::where('status' , 'menunggu p.gudang')->get();
+        $pembelianobat = pembelianModel::where('jenis','obat')->where('status' , 'menunggu p.gudang')->get();
+        $pembelianbahan = pembelianModel::where('jenis','bahan')->where('status' , 'menunggu p.gudang')->get();
+        $pembelianalat = pembelianModel::where('jenis','alat')->where('status' , 'menunggu p.gudang')->get();
         return view('admin_gudang.layout.permintaan_pembelian',[
-            'title' => 'permintaan obat',
-            'pembelian' => $pembelian
+            'title' => 'permintaan Pembelian',
+            'pembelianobat' => $pembelianobat,
+            'pembelianbahan' => $pembelianbahan,
+            'pembelianalat' => $pembelianalat
             ]);
     }
+
     public function show_verifikasi(Request $request , $id){
         $pembelian = pembelianModel::findorFAil($id);
         $detail_pembelian = detail_pembelianModel::where('id_pembelian' , $id)->get();
         $obat_gudang = obat_gudangModel::all();
         return view('admin_gudang.layout.tampilan_verifikasi',[
-            'title' => 'permintaan obat',
+            'title' => 'permintaan Pembelian',
             'detail_pembelian' => $detail_pembelian,
             'pembelian' => $pembelian,
             'obat_gudang' => $obat_gudang,

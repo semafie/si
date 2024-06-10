@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('jam');
             $table->String('total_harga');
+            $table->enum('jenis',['obat','bahan','alat']);
             $table->String('status');
             $table->timestamps();
         });

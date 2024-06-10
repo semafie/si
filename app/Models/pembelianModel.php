@@ -15,7 +15,8 @@ class pembelianModel extends Model
         'tanggal',
         'jam',
         'total_harga',
-        'status'
+        'status',
+        'jenis',
     ];
 
     

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_obat');
             $table->integer('harga_obat');
             $table->integer('jumlah_stok');
+            $table->enum('jenis',['obat','bahan','alat']);
             $table->timestamps();
         });
     }

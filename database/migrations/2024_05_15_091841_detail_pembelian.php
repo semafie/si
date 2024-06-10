@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('id_obat');
             $table->String('nama_obat');
             $table->integer('harga_obat');
+            $table->enum('jenis',['obat','bahan','alat']);
             $table->integer('jumlah_stok');
             $table->integer('sub_total');
             $table->integer('id_pembelian');

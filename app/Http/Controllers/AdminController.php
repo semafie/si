@@ -11,31 +11,57 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function show_dashboard(){
+
+        $obat = obatModel::where('jenis', 'obat')->where('jumlah_stok','<','10')->get();
+        $bahan = obatModel::where('jenis', 'bahan')->where('jumlah_stok','<','10')->get();
+        $alat = obatModel::where('jenis', 'alat')->where('jumlah_stok','<','10')->get();
+
         return view('admin.layout.dashboard',[
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'obat' => $obat,
+            'bahan' => $bahan,
+            'alat' => $alat
         ]);
     }
     
 
     public function show_semua_obat(){
-        $obat = obatModel::all();
+        $obat = obatModel::where('jenis', 'obat')->get();
+        $bahan = obatModel::where('jenis', 'bahan')->get();
+        $alat = obatModel::where('jenis', 'alat')->get();
+
         return view('admin.layout.stok_obat',[
-            'title' => 'Semua stok Obat',
-            'obat' => $obat
+            'title' => 'Semua stok',
+            'obat' => $obat,
+            'bahan' => $bahan,
+            'alat' => $alat
         ]);
     }
 
+
     public function show_beli_obat(){
-        $pembelian = pembelianModel::latest()->first();
-        $newIdPembelian = $pembelian ? $pembelian->id + 1 : 1;
+        $pembelianalat = pembelianModel::where('jenis', 'alat')->latest()->first();
+        $pembelianbahan = pembelianModel::where('jenis', 'bahan')->latest()->first();
+        $pembelianobat = pembelianModel::where('jenis', 'obat')->latest()->first();
+        $newIdPembelianobat = $pembelianobat ? $pembelianobat->id + 1 : 1;
+        $newIdPembelianbahan = $pembelianbahan ? $pembelianbahan->id + 1 : 1;
+        $newIdPembelianalat = $pembelianalat ? $pembelianalat->id + 1 : 1;
 
     // Dapatkan detail_pembelian dengan id_pembelian yang baru
-    $detail_pembelian = detail_pembelianModel::where('id_pembelian', $newIdPembelian)->get();
-        $obat = obatModel::all();
+    $detail_pembelianalat = detail_pembelianModel::where('jenis', 'alat')->where('id_pembelian', $newIdPembelianalat)->get();
+    $detail_pembelianobat = detail_pembelianModel::where('jenis', 'obat')->where('id_pembelian', $newIdPembelianobat)->get();
+    $detail_pembelianbahan = detail_pembelianModel::where('jenis', 'bahan')->where('id_pembelian', $newIdPembelianbahan)->get();
+        $obat = obatModel::where('jenis' ,'obat')->get();
+        $bahan = obatModel::where('jenis' ,'bahan')->get();
+        $alat = obatModel::where('jenis' ,'alat')->get();
         return view('admin.layout.beli_obat',[
-            'title' => 'Beli Obat',
+            'title' => 'Pembelian',
             'obat' => $obat,
-            'detail_pembelian' => $detail_pembelian
+            'bahan' => $bahan,
+            'alat' => $alat,
+            'detail_pembelianobat' => $detail_pembelianobat,
+            'detail_pembelianbahan' => $detail_pembelianbahan,
+            'detail_pembelianalat' => $detail_pembelianalat,
         ]);
     }
 

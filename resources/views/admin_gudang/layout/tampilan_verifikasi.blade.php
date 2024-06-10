@@ -49,27 +49,30 @@
               </tbody>
             </table>
         </div>
-        <form action="/admin/pembelian/tambah" method="POST">
+
+        <form action="/admin/verifikasi/tambah/{{ $pembelian->id }}" method="POST">
         @csrf
+        @method('put')
 
         <div class="dua_label mt-3" >
           <label for="defaultFormControlInput" class="form-label">ID</label>
           <label  for="defaultFormControlInput" class="form-label">Tanggal Pembelian</label>
         </div>
         <div class="dua_input">
-          <input type="text" class="form-control" value="{{ $pembelian->id }}"  disabled placeholder="ID dibuat otomatis" aria-describedby="defaultFormControlHelp" />
-          <input id="tanggal_pembelian" type="text" value="{{ $pembelian->tanggal }}" name="tanggal" class="form-control" aria-describedby="defaultFormControlHelp" />
+          <input type="text" class="form-control" readonly value="{{ $pembelian->id }}" name="id_pembelian"  placeholder="ID dibuat otomatis" aria-describedby="defaultFormControlHelp" />
+          <input id="tanggal_pembelian" readonly type="text" value="{{ $pembelian->tanggal }}" name="tanggal" class="form-control" aria-describedby="defaultFormControlHelp" />
         </div>
         <div class="dua_label" >
           <label  for="defaultFormControlInput" class="form-label">Jam</label>
           <label  for="defaultFormControlInput" class="form-label">Total Harga</label>
         </div>
-        <form action=""></form>
+        
         <div class="dua_input">
           <input id="jam" type="text" class="form-control" value="{{ $pembelian->jam }}" name="jam" placeholder="Masukkan Jam" aria-describedby="defaultFormControlHelp" />
           <input id="total_harga" type="text" name="total_harga" value="" readonly class="form-control" placeholder="Masukkan Total Harga" aria-describedby="defaultFormControlHelp" />
         </div>
-        <a class="dua_obat"><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahobat">Verifikasi Pembelian</button></a>
+        <a class="dua_obat"></a>
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahobat">Verifikasi Pembelian</button>
       </form>
     </div>
 </div>
