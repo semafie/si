@@ -83,8 +83,8 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>nama obat</th>
-                  <th>harga obat</th>
+                  <th>nama Bahan</th>
+                  <th>harga Bahan</th>
                   <th>jumlah stok</th>
                   <th>Aksi</th>
                 </tr>
@@ -107,7 +107,7 @@
                         <div class="modal-dialog modal-sm modal-dialog-centered">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="modalToggleLabel">Edit Obat</h5>
+                              <h5 class="modal-title" id="modalToggleLabel">Edit Bahan</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                     
@@ -121,7 +121,7 @@
                                     <input type="text" name="jumlah_stok" value="{{ $item->jumlah_stok }}" name="jumlah_stok" class="form-control" id="defaultFormControlInput" placeholder="Masukkan jumlah stok" aria-describedby="defaultFormControlHelp" />
                             </div>
                             <div class="modal-footer">
-                              <button type="submit" class="btn btn-primary" >Edit Obat</button>
+                              <button type="submit" class="btn btn-primary" >Edit Bahan</button>
                             </div>
                         </form>
                           </div>
@@ -138,8 +138,8 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>nama obat</th>
-                  <th>harga obat</th>
+                  <th>nama Alat</th>
+                  <th>harga Alat</th>
                   <th>jumlah stok</th>
                   <th>Aksi</th>
                 </tr>
@@ -162,7 +162,7 @@
                         <div class="modal-dialog modal-sm modal-dialog-centered">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="modalToggleLabel">Edit Obat</h5>
+                              <h5 class="modal-title" id="modalToggleLabel">Alat Obat</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                     
@@ -176,7 +176,7 @@
                                     <input type="text" name="jumlah_stok" value="{{ $item->jumlah_stok }}" name="jumlah_stok" class="form-control" id="defaultFormControlInput" placeholder="Masukkan jumlah stok" aria-describedby="defaultFormControlHelp" />
                             </div>
                             <div class="modal-footer">
-                              <button type="submit" class="btn btn-primary" >Edit Obat</button>
+                              <button type="submit" class="btn btn-primary" >Edit Alat</button>
                             </div>
                         </form>
                           </div>

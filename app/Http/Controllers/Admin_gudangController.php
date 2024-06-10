@@ -27,10 +27,11 @@ class Admin_gudangController extends Controller
     }
 
     public function show_transaksi_selesai(){
-        $pembelian = detail_pembelianModel::where('status' , 'selesai')->get();
+        $pembelian = pembelianModel::where('status' , 'selesai')->get();
         $detail_pembelian = detail_pembelianModel::get();
+        // dd($pembelian);
         return view('admin_gudang.layout.transaksi_selesai',[
-            'title' => 'Transaksi selesai',
+            'title' => 'Transaksi Selesai',
             'pembelian' => $pembelian,
             'detail_pembelian' => $detail_pembelian,
             'getRecord' => User::find(Auth::user()->id),
@@ -42,7 +43,7 @@ class Admin_gudangController extends Controller
         $bahan = obat_gudangModel::where('jenis', 'bahan')->get();
         $alat = obat_gudangModel::where('jenis', 'alat')->get();
         return view('admin_gudang.layout.stok_obat',[
-            'title' => 'stok gudang',
+            'title' => 'Stok Gudang',
             'obat' => $obat,
             'bahan' => $bahan,
             'alat' => $alat,
@@ -55,7 +56,7 @@ class Admin_gudangController extends Controller
         $pembelianbahan = pembelianModel::where('jenis','bahan')->where('status' , 'menunggu p.gudang')->get();
         $pembelianalat = pembelianModel::where('jenis','alat')->where('status' , 'menunggu p.gudang')->get();
         return view('admin_gudang.layout.permintaan_pembelian',[
-            'title' => 'permintaan Pembelian',
+            'title' => 'Permintaan Pembelian',
             'pembelianobat' => $pembelianobat,
             'pembelianbahan' => $pembelianbahan,
             'pembelianalat' => $pembelianalat,
@@ -68,7 +69,7 @@ class Admin_gudangController extends Controller
         $detail_pembelian = detail_pembelianModel::where('id_pembelian' , $id)->get();
         $obat_gudang = obat_gudangModel::all();
         return view('admin_gudang.layout.tampilan_verifikasi',[
-            'title' => 'permintaan Pembelian',
+            'title' => 'Verifikasi',
             'detail_pembelian' => $detail_pembelian,
             'pembelian' => $pembelian,
             'obat_gudang' => $obat_gudang,

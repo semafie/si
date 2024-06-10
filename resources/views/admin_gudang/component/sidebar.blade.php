@@ -74,7 +74,7 @@
       <li class="menu-item @active('gudang_stok_obat') @active('admin_menipiss') @active('gudang_spermintaan')">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-layout"></i>
-          <div data-i18n="Layouts">Obat</div>
+          <div data-i18n="Layouts">Gudang</div>
         </a>
 
         <ul class="menu-sub ">
