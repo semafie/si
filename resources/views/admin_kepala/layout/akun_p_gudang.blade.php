@@ -136,4 +136,51 @@
   <script>
     let table = new DataTable('#myTable')
   </script>
+
+<script>
+  @if(Session::has('berhasil_tambah'))
+
+  Swal.fire({
+    title: 'Berhasil',
+    text: 'akun p gudang Berhasil ditambahkan',
+    icon: 'success',
+    confirmButtonText: 'Oke'
+  })
+
+  @elseif(Session::has('gagal_tambah'))
+  Swal.fire({
+    title: 'Gagal',
+    text: 'akun p gudang gagal di tambahkan',
+    icon: 'error',
+    confirmButtonText: 'Oke'
+  })
+
+  @elseif(Session::has('kosong_tambah'))
+
+  Swal.fire({
+    title: 'Gagal',
+    text: 'tidak boleh ada data yang kosong',
+    icon: 'error',
+    confirmButtonText: 'Oke'
+  })
+
+  @elseif(Session::has('berhasil_edit'))
+
+Swal.fire({
+  title: 'Berhasil',
+  text: 'Data gudang Berhasil di edit',
+  icon: 'success',
+  confirmButtonText: 'Oke'
+})
+@elseif(Session::has('berhasil_hapus'))
+
+Swal.fire({
+  title: 'Berhasil',
+  text: 'akun p farmasi Berhasil di hapus',
+  icon: 'success',
+  confirmButtonText: 'Oke'
+})
+  @endif
+
+   </script>
 @endsection
