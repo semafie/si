@@ -44,9 +44,9 @@ class AdminController extends Controller
 
 
     public function show_beli_obat(){
-        $pembelianalat = pembelianModel::where('jenis', 'alat')->latest()->first();
-        $pembelianbahan = pembelianModel::where('jenis', 'bahan')->latest()->first();
-        $pembelianobat = pembelianModel::where('jenis', 'obat')->latest()->first();
+        $pembelianalat = pembelianModel::latest()->first();
+        $pembelianbahan = pembelianModel::latest()->first();
+        $pembelianobat = pembelianModel::latest()->first();
         $newIdPembelianobat = $pembelianobat ? $pembelianobat->id + 1 : 1;
         $newIdPembelianbahan = $pembelianbahan ? $pembelianbahan->id + 1 : 1;
         $newIdPembelianalat = $pembelianalat ? $pembelianalat->id + 1 : 1;
@@ -55,6 +55,7 @@ class AdminController extends Controller
     $detail_pembelianalat = detail_pembelianModel::where('jenis', 'alat')->where('id_pembelian', $newIdPembelianalat)->get();
     $detail_pembelianobat = detail_pembelianModel::where('jenis', 'obat')->where('id_pembelian', $newIdPembelianobat)->get();
     $detail_pembelianbahan = detail_pembelianModel::where('jenis', 'bahan')->where('id_pembelian', $newIdPembelianbahan)->get();
+    
         $obat = obatModel::where('jenis' ,'obat')->get();
         $bahan = obatModel::where('jenis' ,'bahan')->get();
         $alat = obatModel::where('jenis' ,'alat')->get();

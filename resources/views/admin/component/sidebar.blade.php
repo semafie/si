@@ -109,12 +109,12 @@
         <ul class="menu-sub ">
           <li class="menu-item @active('transaksi_menunggu')">
             <a href="{{ route('transaksi_menunggu') }}" class="menu-link">
-              <div data-i18n="Without menu">Transaksi menunggu</div>
+              <div data-i18n="Without menu">Transaksi Menunggu</div>
             </a>
           </li>
           <li class="menu-item @active('transaksi_selesai')">
             <a href="{{ route('transaksi_selesai') }}" class="menu-link">
-              <div data-i18n="Without navbar">Transaksi selesai</div>
+              <div data-i18n="Without navbar">Transaksi Selesai</div>
             </a>
           </li>
       </li>

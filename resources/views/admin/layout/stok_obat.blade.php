@@ -172,7 +172,7 @@
                 </div>
                 <div class="tab-pane fade" id="navs-pills-top-profile" role="tabpanel">
                     <a><button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#tambahbph">Tambah bhp Baru</button></a>
+                        data-bs-target="#tambahbph">Tambah BHP Baru</button></a>
                     <div class="text-nowrap table-responsive pt-0">
                     <table id="myTable1" class="datatables-basic table border-top w-100">
                         <thead>
