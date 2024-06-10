@@ -80,7 +80,7 @@
         <ul class="menu-sub ">
           <li class="menu-item @active('admin_obat')">
             <a href="{{ route('admin_obat') }}" class="menu-link">
-              <div data-i18n="Container">semua stok</div>
+              <div data-i18n="Container">Semua Stok</div>
             </a>
           </li>
           <li class="menu-item @active('admin_beli_obat')">

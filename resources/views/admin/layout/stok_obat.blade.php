@@ -36,7 +36,7 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="table-body">
                                 @foreach ($obat as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
@@ -184,7 +184,7 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table-bodys">
                             @foreach ($bahan as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
@@ -254,7 +254,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">Edit Obat</button>
+                                                    <button type="submit" class="btn btn-primary">Edit Bahan</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -310,7 +310,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Tambah Obat</button>
+                                    <button type="submit" class="btn btn-primary">Tambah Bahan</button>
                                 </div>
                             </form>
                         </div>
@@ -332,7 +332,7 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table-bodyss">
                             @foreach ($alat as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
@@ -356,7 +356,7 @@
                                     <div class="modal-dialog modal-lg modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="modalToggleLabel">Edit Obat</h5>
+                                                <h5 class="modal-title" id="modalToggleLabel">Edit Alat</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -458,7 +458,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Tambah Obat</button>
+                                    <button type="submit" class="btn btn-primary">Tambah Alat</button>
                                 </div>
                             </form>
                         </div>
@@ -472,6 +472,31 @@
         </div>
     </div>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('#table-body tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td:first-child').textContent = index + 1;
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('#table-bodys tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td:first-child').textContent = index + 1;
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('#table-bodyss tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td:first-child').textContent = index + 1;
+            });
+        });
+    </script>
 
 
     <script>
