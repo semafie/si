@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\detail_pembelianModel;
 use App\Models\obatModel;
 use App\Models\pembelianModel;
+use App\Models\User;
 use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -20,7 +22,8 @@ class AdminController extends Controller
             'title' => 'Dashboard',
             'obat' => $obat,
             'bahan' => $bahan,
-            'alat' => $alat
+            'alat' => $alat,
+            'getRecord' => User::find(Auth::user()->id),
         ]);
     }
     
@@ -31,10 +34,11 @@ class AdminController extends Controller
         $alat = obatModel::where('jenis', 'alat')->get();
 
         return view('admin.layout.stok_obat',[
-            'title' => 'Semua stok',
+            'title' => 'Semua Stok',
             'obat' => $obat,
             'bahan' => $bahan,
-            'alat' => $alat
+            'alat' => $alat,
+            'getRecord' => User::find(Auth::user()->id),
         ]);
     }
 
@@ -62,6 +66,7 @@ class AdminController extends Controller
             'detail_pembelianobat' => $detail_pembelianobat,
             'detail_pembelianbahan' => $detail_pembelianbahan,
             'detail_pembelianalat' => $detail_pembelianalat,
+            'getRecord' => User::find(Auth::user()->id),
         ]);
     }
 
@@ -99,6 +104,7 @@ class AdminController extends Controller
         return view('admin.layout.obat_menipis',[
             'title' => 'Obat Menipis',
             'obat' => $obat,
+            'getRecord' => User::find(Auth::user()->id),
         ]);
     }
 
@@ -108,16 +114,18 @@ class AdminController extends Controller
         return view('admin.layout.transaksi_menunggu',[
             'title' => 'Transaksi Menunggu',
             'pembelian' => $pembelian,
-            'detail_pembelian' => $detail_pembelian
+            'detail_pembelian' => $detail_pembelian,
+            'getRecord' => User::find(Auth::user()->id),
         ]);
     }
     public function show_transaksi_selesai(){
         $pembelian = pembelianModel::where('status' , 'selesai')->get();
         $detail_pembelian = detail_pembelianModel::get();
         return view('admin.layout.transaksi_selesai',[
-            'title' => 'Transaksi selesai',
+            'title' => 'Transaksi Selesai',
             'pembelian' => $pembelian,
-            'detail_pembelian' => $detail_pembelian
+            'detail_pembelian' => $detail_pembelian,
+            'getRecord' => User::find(Auth::user()->id),
         ]);
     }
 }

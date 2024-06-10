@@ -50,7 +50,7 @@
             </g>
           </svg>
         </span>
-        <span class="judul_dashboard">Opname<span>Pharmachy</span></span>
+        <span class="judul_dashboard">Opname<span>Pharmacy</span></span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

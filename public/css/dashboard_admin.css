@@ -140,3 +140,10 @@
 .btn-formaa{
     color: #FF5A7C;
 }
+
+.title-nav-admin{
+    color: #FF5A7C;
+    margin-top: 16px;
+    font-weight: 600;
+    font-size: 25px;
+}
