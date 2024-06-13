@@ -80,7 +80,7 @@ class pembelianController extends Controller
             $obat = obatModel::find($detail->id_obat);
             
             if ($obat) {
-                if($detail->jumlah_stok < $obat_gudang->jumlah_stok){
+                if($detail->jumlah_stok <= $obat_gudang->jumlah_stok){
                     $detail->status = 'diterima';
                     $detail->save();
                     $obat->jumlah_stok += $detail->jumlah_stok;
@@ -93,7 +93,7 @@ class pembelianController extends Controller
     
             // Jika obat ditemukan, kurangi jumlah stoknya
             if ($obat_gudang) {
-                if($detail->jumlah_stok < $obat_gudang->jumlah_stok){
+                if($detail->jumlah_stok <= $obat_gudang->jumlah_stok){
                     $obat_gudang->jumlah_stok -= $detail->jumlah_stok;
                     $obat_gudang->save();
                 }
