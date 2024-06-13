@@ -27,9 +27,7 @@
                         @method('put')
                         <button type="submit" class="btn btn-warning">print</button>
                         </form>
-                        <form action="">
-                        <button type="submit" class="btn btn-danger">hapus</button>
-                    </form>
+                        
                     </td>
                 </tr>
                 @endforeach

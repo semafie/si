@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\detail_pembelianModel;
+use App\Models\obat_gudangModel;
 use App\Models\obatModel;
 use App\Models\pembelianModel;
 use App\Models\User;
+use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -73,11 +76,27 @@ class AdminController extends Controller
 
     public function laporan(Request $request
     ){
+        $tanggalHariIni = Carbon::today()->toDateString(); // Format: YYYY-MM-DD
+
+        // Atau jika Anda ingin menampilkan dengan format yang berbeda
+        $tanggalHariIniFormatted = Carbon::today()->format('d-m-Y');
+        $pembelian = pembelianModel::where('tanggal', $tanggalHariIniFormatted)->get();
+        $pembelianIds = $pembelian->pluck('id');
+
+    // Mengambil detail_pembelian dan menggabungkan berdasarkan id_obat
+        $detail_pembelian = detail_pembelianModel::whereIn('id_pembelian', $pembelianIds)
+                            ->select('id_obat', 'nama_obat', DB::raw('SUM(jumlah_stok) as total_stok'))
+                            ->groupBy('id_obat', 'nama_obat')
+                            ->get();
+        $obat_gudang = obat_gudangModel::all();
         $widthInCm = 9;
     $widthInPoints = $widthInCm * 28.3465;
     $data = ['title' => 'Welcome to Laravel PDF generation'];
 
-        $pdf = PDF::loadview('laporan')
+        $pdf = PDF::loadview('cetakstoktipis',[
+            'obat' => $obat_gudang,
+            'detail_pembelian' => $detail_pembelian,
+        ])
                 ->setPaper('A4', 'portrait');
                 
         return $pdf->stream('nota_antrian.pdf');

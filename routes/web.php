@@ -56,6 +56,7 @@ Route::delete('/admin/detail_pemebelian/hapus/{id}',[detail_pembelianController:
 
 });
 Route::put('/cetaklaporans/{id}',[AdminController::class, 'laporans'])->name('laporans');
+Route::get('/cobakcetak',[AdminController::class, 'laporan'])->name('laporan');
 // Route::get('/laporan',[AdminController::class, 'laporan'])->name('laporan');
 
 Route::group(['middleware' => 'admin_kepala'], function(){
