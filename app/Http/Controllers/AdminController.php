@@ -125,7 +125,7 @@ class AdminController extends Controller
     public function show_obat_menipis(){
         $obat = obatModel::where('jumlah_stok','<', 10 )->get();
         return view('admin.layout.obat_menipis',[
-            'title' => 'Obat Menipis',
+            'title' => 'Stok Menipis',
             'obat' => $obat,
             'getRecord' => User::find(Auth::user()->id),
         ]);
