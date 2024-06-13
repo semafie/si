@@ -8,8 +8,8 @@
               <thead>
                 <tr>
                     <th>id</th>
-                    <th>nama obat</th>
-                    <th>harga obat</th>
+                    <th>nama Barang</th>
+                    <th>harga Barang</th>
                     <th>jumlah stok</th>
                 </tr>
               </thead>
