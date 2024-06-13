@@ -62,6 +62,7 @@
             <h1>LAPORAN STOK OBAT MENIPIS</h1>
             <h2>OPNAMEPHARMACY</h2>
         </div>
+        <p style="text-align: left; margin-top: 10px;">Tanggal : {{ $tanggal }}</p>
         <table>
             <thead>
                 <tr>
@@ -77,12 +78,17 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama_obat }}</td>
-                    <td>{{ $item->jumlah_stok }}</td>
+                    <td>{{ $item->total_stok }}</td>
                     <td>
                         @php
                         $stok_gudang = $obat->firstWhere('id', $item->id_obat);
                         @endphp
-                        {{ $stok_gudang ? $stok_gudang->jumlah_stok : 'Stok tidak ditemukan' }}
+                        {{-- {{ $stok_gudang ? $stok_gudang->jumlah_stok : 'Stok tidak ditemukan' }} --}}
+                        @if(is_null($stok_gudang->jumlah_stok))
+                            0
+                        @else
+                            {{ $stok_gudang->jumlah_stok }}
+                        @endif
                     </td>
                 </tr>
                 @endforeach

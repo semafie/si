@@ -55,6 +55,7 @@
                                 <th>harga obat</th>
                                 <th>jumlah beli</th>
                                 <th>sub total</th>
+                                <th>status</th>
                             </tr>
                           </thead>
                           <tbody id="table-body">
@@ -65,6 +66,7 @@
                                 <td>{{ $detail->harga_obat }}</td>
                                 <td>{{ $detail->jumlah_stok }}</td>
                                 <td>{{ $detail->sub_total }}</td>
+                                <td>{{ $detail->status }}</td>
                             </tr>
                             @endforeach
                           </tbody>

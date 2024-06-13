@@ -18,7 +18,7 @@ return new class extends Migration
             $table->String('total_harga');
             $table->enum('jenis',['obat','bahan','alat']);
             $table->String('status');
-            $table->unsignedBigInteger('id_user');
+            // $table->integer('id_user');
             $table->timestamps();
         });
     }

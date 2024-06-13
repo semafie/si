@@ -79,15 +79,17 @@ class AdminController extends Controller
         $tanggalHariIni = Carbon::today()->toDateString(); // Format: YYYY-MM-DD
 
         // Atau jika Anda ingin menampilkan dengan format yang berbeda
-        $tanggalHariIniFormatted = Carbon::today()->format('d-m-Y');
+        $tanggalHariIniFormatted = Carbon::today()->format('Y-m-d');
         $pembelian = pembelianModel::where('tanggal', $tanggalHariIniFormatted)->get();
         $pembelianIds = $pembelian->pluck('id');
+        
 
     // Mengambil detail_pembelian dan menggabungkan berdasarkan id_obat
         $detail_pembelian = detail_pembelianModel::whereIn('id_pembelian', $pembelianIds)
                             ->select('id_obat', 'nama_obat', DB::raw('SUM(jumlah_stok) as total_stok'))
                             ->groupBy('id_obat', 'nama_obat')
                             ->get();
+                            // dd($detail_pembelian);
         $obat_gudang = obat_gudangModel::all();
         $widthInCm = 9;
     $widthInPoints = $widthInCm * 28.3465;
@@ -96,6 +98,7 @@ class AdminController extends Controller
         $pdf = PDF::loadview('cetakstoktipis',[
             'obat' => $obat_gudang,
             'detail_pembelian' => $detail_pembelian,
+            'tanggal' => $tanggalHariIniFormatted
         ])
                 ->setPaper('A4', 'portrait');
                 

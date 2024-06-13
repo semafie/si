@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card obat_menipis">
-      <a href="/cobakcetak"><button type="button" class="btn btn-warning">Cetak stok menipis</button></a>
+      <a href="/cobakcetak" target="_blank"><button type="button" class="btn btn-warning">Cetak stok menipis</button></a>
         <div class="text-nowrap table-responsive pt-0">
             <table id="myTable" class="datatables-basic table border-top">
               <thead>

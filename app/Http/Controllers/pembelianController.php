@@ -66,7 +66,7 @@ class pembelianController extends Controller
 
         $pembelian = pembelianModel::findorFAil($request->id_pembelian);
         $pembelian->total_harga = $request->total_harga;
-        $pembelian->status = 'selesai';
+        $pembelian->status = 'Selesai';
 
         $pembelian->save();
 
@@ -74,14 +74,20 @@ class pembelianController extends Controller
         // dd($detail_pembelian);
         foreach ($detail_pembelian as $detail) {
             // Cari obat berdasarkan id_obat dari detail pembelian
+            // $detail->status = 'sele'
             
             $obat_gudang = obat_gudangModel::find($detail->id_obat);
             $obat = obatModel::find($detail->id_obat);
             
             if ($obat) {
                 if($detail->jumlah_stok < $obat_gudang->jumlah_stok){
+                    $detail->status = 'diterima';
+                    $detail->save();
                     $obat->jumlah_stok += $detail->jumlah_stok;
                     $obat->save();
+                } else {
+                    $detail->status = 'ditolak';
+                    $detail->save();
                 }
             }
     
